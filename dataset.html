@@ -112,22 +112,21 @@
       <div class="columns is-centered ">
 
         <div class="column is-full">
-          <h2 class="title is-4">R2R-IE-CE v1<span class="tag is-warning is-light">Available upon acceptance</span></h2>
+          <h2 class="title is-4">R2R-IE-CE v1<span class="tag is-warning is-light">To be released</span></h2>
           
           <div class="content has-text-justified">
             <p>
               This dataset is used to benchmark the task of <i>Detection and Localization of Instruction Errors</i>, presented in our paper.
-              You will find the dataset explanation here, as well as the Habitat Integration to use it.
+              You will find the dataset explanation here, as well as the Habitat integration tools to use it.
             </p>
           </div>
 
-          <h5 class="title is-5">Val Unseen</h5>
-          <p>Here we show how our json.gz dataset are formed:</p>
+          <h5 class="title is-5">Format of {split}_bertidx.json.gz</h5>
 
           <pre><code class="language-json line-numbers">
 {"episodes": [
 {
-  "episode_id": "//integer number",
+  "episode_id": "integer number representing an episode id",
   "trajectory_id": "integer number representing the gt trajectory",
   "scene_id": "string representing the scene",
   "start_position": "list of float representing the start position",
@@ -143,10 +142,10 @@
     "error_type": "integer representing the error type",
     "token_swapped": [
     {
+      "old_word": "string representing the old word",
       "new_word": "string representing the new word",
       "token_id" : ["list of bert token id of this word"],
       "token_id_position": ["list of integer representing the index of the swapped words in the new instruction"],
-      "old_word": "string representing the old word",
     }]
   }
   "old_episode_id": "integer number representing the episode id from which this episode was generated"
@@ -157,7 +156,7 @@
 ]}
           </code></pre>
         
-          <h5 class="title is-5">Habitat Integration</h5>
+          <h5 class="title is-5">Habitat integration</h5>
           <p>In Progress</p>
         </div>
        
