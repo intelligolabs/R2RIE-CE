@@ -1,9 +1,774 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Le-RNR-map">
+  <meta name="keywords" content="RNR-map, Le-RNR-map, lernr map, lernrmap, lernr, CLIP">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mind the Error! Detect and Localize Instruction Errors in Vision and Language
+    Navigation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/bulma-carousel.min.css"> -->
+  <!-- <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/robot.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <!-- <script src="./static/js/bulma-carousel.min.js"></script> -->
+  <!-- <script src="./static/js/bulma-slider.min.js"></script> -->
+  <script src="./static/js/index.js"></script>
+  <meta name="google-site-verification" content="rvZfDSs9SdTOr4oSUadPVLK7hrmPjfievNepG09VJm8" />
+
+</head>
+
 <body>
 
-<h1>In progress ...</h1>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://intelligolabs.net/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://intelligolabs.github.io/Le-RNR-Map/">
+              Le-RNR-Map (ICCV 2023)
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              Mind the Error! Detection and Localization of
+              Instruction Errors in Vision-and-Language Navigation
+            </h1>
+            <div class="is-size-5 publication-authors">
+
+              <span class="author-block">
+                <a href="https://francescotaioli.github.io/">Francesco Taioli</a><sup>1,4</sup>,
+              </span>
+
+              <span class="author-block">
+                Stefano Rosa<sup>2</sup>,
+              </span>
+
+              <span class="author-block">
+                Alberto Castellini<sup>1</sup>,
+              </span>
+
+              <span class="author-block">
+                Lorenzo Natale<sup>2</sup>,
+              </span><br>
+
+              <span class="author-block">
+                Alessio Del Bue<sup>2</sup>,
+              </span>
+
+              <span class="author-block">
+                Alessandro Farinelli<sup>1</sup>,
+              </span>
+
+              <span class="author-block">
+                Marco Cristani<sup>1</sup>,
+              </span>
+              <span class="author-block">
+                Yiming Wang<sup>3</sup>
+              </span>
+            </div>
+
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>1</sup> University of Verona,</span>
+              <span class="author-block"><sup>2</sup> Istituto Italiano di Tecnologia (IIT),</span>
+              <span class="author-block"><sup>3</sup> Fondazione Bruno Kessler,</span>
+              <span class="author-block"><sup>4</sup> Polytechnic of Turin</span>
+            </div>
+
+            <!-- <span class="tag is-success is-primary is-large">Accepted at </span> -->
+
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <!-- <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span> -->
+
+
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/intelligolabs/R2RIE-CE"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (upon acceptance)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="dataset.html" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-database"></i>
+                    </span>
+                    <span>Dataset (upon acceptance)</span>
+                  </a>
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-max-desktop">
+          <div class="content has-text-centered">
+            <div class="columns is-centered">
+              <div class="column is-9">
+                <img class="image is-371x299" src="./static/images/architecture_final.svg" alt="Teaser">
+                <p>
+                  Full architecture of our <b>IEDL</b> method.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Vision-and-Language Navigation in Continuous Environments (VLN-CE) is one of the most intuitive yet challenging embodied AI tasks. 
+Agents are tasked to navigate towards a target goal by executing a set of low-level actions, following a series of natural language instructions. All VLN-CE methods in the literature assume that language instructions are exact.
+However, in practice, instructions given by humans can contain errors when describing a spatial environment due to inaccurate memory or confusion. Current VLN-CE benchmarks do not address this scenario, making the state-of-the-art methods in VLN-CE fragile in the presence of erroneous instructions from human users.
+For the first time, we propose a novel benchmark dataset that introduces various types of instruction errors considering potential human causes. 
+This benchmark provides valuable insight into the robustness of VLN systems in continuous environments. 
+We observe a noticeable performance drop (up to -25%) in Success Rate when evaluating the state-of-the-art VLN-CE methods on our benchmark.
+Moreover, we formally define the task of Instruction Error Detection and Localization, and establish an evaluation protocol on top of our benchmark dataset. We also propose an effective method, based on a cross-modal transformer architecture, that achieves the best performance in error detection and localization, compared to baselines. 
+Surprisingly, our proposed method has revealed errors in the validation set of the two commonly used datasets for VLN-CE, i.e., R2R-CE and RxR-CE, demonstrating the utility of our technique in other tasks.
+            </p>
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Paper video. -->
+      <hr>
+      <div class="columns is-centered has-text-centered">
+
+        <div class="column">
+          <h2 class="title is-3">Scenario</h2>
+
+          <div class="columns is-centered">
+            <div class="column is-narrow">
+              <img class="image" width="500" height="500" src="./static/images/teaser.svg" alt="Teaser">
+            </div>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              An agent must follow instructions expressed in natural
+              language to reach a target goal. For example:
+              <b><i>“Exit the bathroom and go <span class="tag is-danger">left</span></i> (<span
+                  class="tag is-success"><span>&#10003;</span>right</span>),<i>
+                  then turn left at the big clock and go into the bedroom and
+                  wait next to the bed.”</i> </b>In this case, just changing “right” to
+              “left” causes the agent to stop the exploration in the wrong
+              location, even if during the path it did not see the “big clock”
+              (yellow star).
+            </p>
+          </div>
+
+
+
+
+        </div>
+        <!--/ Paper video. -->
+      </div>
+
+      <hr>
+      <div class="is-full">
+        <h3 class="title is-3">Effect of Direction error</h3>
+        <p>We reported the scenario depicted in the <b>Fig.1</b> of the paper (also reported in the <i>Scenario</i>
+          Section above).</p>
+        The videos shows the full trajectories of the agent following the perturbed and correct instructions.
+        
+        <div class="columns is-desktop">
+
+          <div class="column">
+            <div class="box">
+              <div class="media-content">
+                <span class="tag is-danger">Perturbed Instruction</span>
+                <div class="card-content">
+                  <div class="content  has-text-justified">
+                    <i>" Exit the bathroom and go left, then turn <span class="tag is-danger">left</span> <u>at the big
+                        clock</u> and go into the bedroom and wait next to the bed."</i>
+                  </div>
+                </div>
+              </div>
+              <!-- <span class="tag is-danger" >Perturbed Episode</span><br> -->
+              <div class="">
+                <video width="500" src="./static/videos/navigation_failure_left_token.mp4" title="YouTube video player"
+                  frameborder="0" autoplay controls muted playsinline
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></video>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="box">
+              <div class="media-content">
+                <span class="tag is-success">Correct Instruction</span>
+                <div class="card-content">
+                  <div class="content  has-text-justified">
+                    <i>"Exit the bathroom and go left, then turn <span class="tag is-success">right</span> <u>at the big
+                        clock</u> and go into the bedroom and wait next to the bed."</i>
+                  </div>
+                </div>
+              </div>
+              <div class="">
+                <video src="./static/videos/navigation_ok_right_token.mp4" title="YouTube video player" frameborder="0"
+                  autoplay controls muted playsinline
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></video>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="modal-js-example" class="modal">
+          <div class="modal-background"></div>
+
+          <div class="modal-content">
+            <div class="box">
+              <div class="columns">
+                <div class="column">
+                  <h3 class="title is-3">Bird's eye view map Legend</h3>
+                  <p>
+                  <ul>
+                    <li>
+                      <b>Red box</b>: Target position
+                    </li>
+
+                    <li><b>Blue box:</b> candidate navigable positions (generated by candidate waypoint predictor)</li>
+                    <li><b>Yellow box:</b> node chosen</li>
+                    <li><b>Green line: </b>path executed</li>
+                  </ul>
+                  </p>
+
+                </div>
+
+                <div class="column">
+                  <img src="./static/images/legend.png" alt="legend" height="300" width="300">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+
+        <!-- Episodes from R2R-CE that should be deleted -->
+        <br><br>
+        <div class="is-full">
+          <h3 class="title is-3">IEDL for detecting <span style="color: red;">errors</span> on <u>R2R-CE standard
+            Validation set</u>
+
+            <button class="button is-info js-modal-trigger is-rounded is-small" style="margin-top: 0.5em;"
+              data-target="modal-js-example">Show BEV map legend</button>
+
+
+          </h3>
+          <p>In our paper, we answered the following question: <i><b>What if we apply <b>IEDL</b> on the R2R-CE
+                dataset?</i></b>
+          </p>
+          <p>Our method, <b>IEDL</b>, detected 8 episodes from R2R-CE standard Val Unseen dataset that should be
+            deleted.</p>
+          <p>Here, we report the video showing the trajectories of these particular episodes.</p>
+          <br>
+          <b>Note</b>: we report the instruction as given in the dataset.
+
+          <div class="columns is-desktop">
+            <!-- video one -->
+            <div class="column">
+              <div class="box">
+                <div class="media-content">
+                  <span class="tag is-danger">Target error</span>
+
+                  <div class="card-content">
+                    <div class="content  has-text-justified">
+                      <blockquote><i>"Walk up to the photo on the wall directly in front of you."</i></blockquote>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="">
+                  <video width="500" src="./static/videos/r2r_ce/2azQ1b91cZZ-327.mp4" title="YouTube video player"
+                    frameborder="0" autoplay controls muted playsinline
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </video>
+                </div>
+                <div class="icon-text">
+                  <span class="icon has-text-info">
+                    <i class="fas fa-info-circle"></i>
+                  </span>
+                  <span>Ep id: 327</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- video two -->
+            <div class="column">
+              <div class="box">
+                <div class="media-content">
+                  <span class="tag is-danger">Ambiguous Instruction</span>
+                  <div class="card-content">
+                    <div class="content has-text-justified">
+                      <blockquote><i>"Turn around and go through the archway. Turn left and take the extreme left. Stop
+                          near the
+                          mantle."</i></blockquote>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="">
+                  <video width="500" src="./static/videos/r2r_ce/2azQ1b91cZZ-1214.mp4" title="YouTube video player"
+                    frameborder="0" autoplay controls muted playsinline
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </video>
+                </div>
+                <div class="icon-text">
+                  <span class="icon has-text-info">
+                    <i class="fas fa-info-circle"></i>
+                  </span>
+                  <span>Ep id: 1214</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="columns is-desktop">
+
+            <!-- video three -->
+            <div class="column">
+              <div class="box">
+                <div class="media-content">
+                  <span class="tag is-danger">Instruction error</span>
+                  <div class="card-content">
+                    <div class="content has-text-justified">
+                      <blockquote>
+                        <i>"Walk past beige rug. Walk past butler's pantry. Make left after eye chart. Wait at gold
+                          polka
+                          dot picture frame."</i>
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="">
+                  <video width="500" src="./static/videos/r2r_ce/zsNo4HB9uLZ-249.mp4" title="YouTube video player"
+                    frameborder="0" autoplay controls muted playsinline
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </video>
+                </div>
+                <div class="icon-text">
+                  <span class="icon has-text-info">
+                    <i class="fas fa-info-circle"></i>
+                  </span>
+                  <span>Ep id: 249</span>
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- video four -->
+            <div class="column">
+              <div class="box">
+                <div class="media-content">
+                  <span class="tag is-danger">Instruction error</span>
+                  <div class="card-content">
+                    <div class="content has-text-justified">
+                      <blockquote>
+                        <i>"Go through middle room and to the right into the room with the sink, go straight through
+                          until
+                          you
+                          come to an archway on your left make a left through it and go through the doorway and
+                          wait."</i>
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="">
+                  <video width="500" src="./static/videos/r2r_ce/zsNo4HB9uLZ-866.mp4" title="YouTube video player"
+                    frameborder="0" autoplay controls muted playsinline
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </video>
+                </div>
+                <div class="icon-text">
+                  <span class="icon has-text-info">
+                    <i class="fas fa-info-circle"></i>
+                  </span>
+                  <span>Ep id: 866</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <div class="columns is-desktop">
+
+          <!-- video three -->
+          <div class="column">
+            <div class="box">
+              <div class="media-content">
+                <span class="tag is-danger">Instruction error</span>
+                <div class="card-content">
+                  <div class="content has-text-justified">
+                    <blockquote>
+                      <i>"Turn right to face an old pew and chairs.
+                        Walk up to the old chairs and turn right.
+                        Walk down the row until you reach the 5th chair."</i>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+
+              <div class="">
+                <video width="500" src="./static/videos/r2r_ce/pLe4wQe7qrG-1625.mp4" title="YouTube video player"
+                  frameborder="0" autoplay controls muted playsinline
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </video>
+              </div>
+              <div class="icon-text">
+                <span class="icon has-text-info">
+                  <i class="fas fa-info-circle"></i>
+                </span>
+                <span>Ep id:1625 </span>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- video four -->
+          <div class="column">
+            <div class="box">
+              <div class="media-content">
+                <span class="tag is-danger">Instruction error & Mesh problem</span>
+                <div class="card-content">
+                  <div class="content has-text-justified">
+                    <blockquote>
+                      <i>"Go through the dooorway on the right, continue straihtacross the hallway and into the room
+                        ahead.
+                        Stop near the shell."</i>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+
+              <div class="">
+                <video width="500" src="./static/videos/r2r_ce/oLBMNvg9in8-30.mp4" title="YouTube video player"
+                  frameborder="0" autoplay controls muted playsinline
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </video>
+              </div>
+              <div class="icon-text">
+                <span class="icon has-text-info">
+                  <i class="fas fa-info-circle"></i>
+                </span>
+                <span>Ep id: 30</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div class="columns is-desktop">
+
+        <!-- video three -->
+        <div class="column">
+          <div class="box">
+            <div class="media-content">
+              <span class="tag is-danger">Reconstruction problem</span>
+              <div class="card-content">
+                <div class="content has-text-justified">
+                  <blockquote>
+                    <i>"Go to the ottoman. Go to the bed. Go to the wardrobe. Go to the glass jug."</i>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+            <div class="">
+              <video width="500" src="./static/videos/r2r_ce/EU6Fwq7SyZv-503.mp4" title="YouTube video player"
+                frameborder="0" autoplay controls muted playsinline
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </video>
+            </div>
+            <div class="icon-text">
+              <span class="icon has-text-info">
+                <i class="fas fa-info-circle"></i>
+              </span>
+              <span>Ep id: 503</span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- video four -->
+        <div class="column">
+          <div class="box">
+            <div class="media-content">
+              <span class="tag is-danger">Instruction error & Mesh problem</span>
+              <div class="card-content">
+                <div class="content has-text-justified">
+                  <blockquote>
+                    <i>"Turn right and go through the door. Go down the hall way and go up the stairway to the left.
+                      Continue up the stairway to the left. Wait by the statue."</i>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+            <div class="">
+              <video width="500" src="./static/videos/r2r_ce/oLBMNvg9in8-852.mp4" title="YouTube video player"
+                frameborder="0" autoplay controls muted playsinline
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </video>
+            </div>
+            <div class="icon-text">
+              <span class="icon has-text-info">
+                <i class="fas fa-info-circle"></i>
+              </span>
+              <span>Ep id: 825</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- RXR-CE -->
+      <div class="is-full">
+        <h3 class="title is-3">IEDL for detecting <span style="color: red;">errors</span> on RxR-CE standard
+          Validation set
+        </h3>
+        <p>We report also the episode to be removed from the validation split of RxR-CE.</p>
+        <p>To prevent slow page loading due to longer episode lengths (resulting in heavier videos) and a higher number of instruction tokens 
+          (averaging 110 per episode) in RxR-CE compared to R2R-CE, we display only two videos on the main page.</p>
+          <p>The remaining videos are accessible <a href="rxr_videos.html">here.</a></p>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <div class="media-content">
+              <span class="tag is-danger">Instruction error</span>
+              <div class="card-content">
+                <div class="content has-text-justified">
+                  <blockquote>
+                    <i>"Came out the wash room beside the glass window and curtain also. Go straight in front of mirrors and beside the big watch.Again 
+                      go straight and turn <b>w</b>right come to another room"</i>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+            <div class="">
+              <video width="500" src="./static/videos/RXR-CE/2azQ1b91cZZ-5877-SPL0.00.mp4" title="YouTube video player"
+                frameborder="0" autoplay controls muted playsinline
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </video>
+            </div>
+            <div class="icon-text">
+              <span class="icon has-text-info">
+                <i class="fas fa-info-circle"></i>
+              </span>
+              <span>Ep id: 5877</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="box">
+            <div class="media-content">
+              <span class="tag is-danger">Instruction error & Mesh problem</span>
+              <div class="card-content">
+                <div class="content has-text-justified">
+                  <blockquote>
+                    <i>"Too long, refer to the video caption"</i>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+            <div class="">
+              <video width="500" src="./static/videos/RXR-CE/QUCTc6BB5sX-6935-SPL0.00.mp4" title="YouTube video player"
+                frameborder="0" autoplay controls muted playsinline
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </video>
+            </div>
+            <div class="icon-text">
+              <span class="icon has-text-info">
+                <i class="fas fa-info-circle"></i>
+              </span>
+              <span>Ep id: 6935</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+  </section>
+
+
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre>
+      <code>
+        
+    </code>
+    </pre>
+    </div>
+  </section> -->
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              <a href="https://github.com/nerfies/nerfies.github.io">Source code</a> of this website (Nerfies)
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Functions to open and close a modal
+      function openModal($el) {
+        $el.classList.add('is-active');
+      }
+
+      function closeModal($el) {
+        $el.classList.remove('is-active');
+      }
+
+      function closeAllModals() {
+        (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+          closeModal($modal);
+        });
+      }
+
+      // Add a click event on buttons to open a specific modal
+      (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+        const modal = $trigger.dataset.target;
+        const $target = document.getElementById(modal);
+
+        $trigger.addEventListener('click', () => {
+          openModal($target);
+        });
+      });
+
+      // Add a click event on various child elements to close the parent modal
+      (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+        const $target = $close.closest('.modal');
+
+        $close.addEventListener('click', () => {
+          closeModal($target);
+        });
+      });
+
+      // Add a keyboard event to close all modals
+      document.addEventListener('keydown', (event) => {
+        if (event.key === "Escape") {
+          closeAllModals();
+        }
+      });
+    });
+  </script>
 
 </body>
-</html>
 
+</html>

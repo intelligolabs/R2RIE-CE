@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Le-RNR-map">
+    <meta name="keywords" content="RNR-map, Le-RNR-map, lernr map, lernrmap, lernr, CLIP">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mind the Error! Detect and Localize Instruction Errors in Vision and Language
+        Navigation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="./static/css/bulma-carousel.min.css"> -->
+    <!-- <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/robot.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <!-- <script src="./static/js/bulma-carousel.min.js"></script> -->
+    <!-- <script src="./static/js/bulma-slider.min.js"></script> -->
+    <script src="./static/js/index.js"></script>
+    <meta name="google-site-verification" content="rvZfDSs9SdTOr4oSUadPVLK7hrmPjfievNepG09VJm8" />
+
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="https://intelligolabs.net/">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More Research
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://intelligolabs.github.io/Le-RNR-Map/">
+                            Le-RNR-Map (ICCV 2023)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h3 class="title is-3 publication-title">
+                            IEDL for detecting <span style="color: red;">errors</span> on RxR-CE standard
+          Validation set
+                        </h3>
+
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <!-- <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span> -->
+
+
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/intelligolabs/R2RIE-CE"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code (upon acceptance)</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="dataset.html" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-database"></i>
+                                        </span>
+                                        <span>Dataset (upon acceptance)</span>
+                                    </a>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+
+
+            <!-- RXR-CE -->
+            <div class="is-full">
+                
+                <p>We report also the episode to be removed from the validation split of RxR-CE.</p>
+              
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Came out the wash room beside the glass window and curtain also. Go straight
+                                            in front of mirrors and beside the big watch.Again
+                                            go straight and turn <b>w</b>right come to another room"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/2azQ1b91cZZ-5877-SPL0.00.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 5877</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error & Mesh problem</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Too long, refer to the video caption"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/QUCTc6BB5sX-6935-SPL0.00.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 6935</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Another two -->
+            <div class="columns">
+                <!-- Another one -->
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error & Mesh problem</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Too long, refer to the video caption"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/2azQ1b91cZZ-9298-SPL0.00.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 9298</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Another one -->
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error & Mesh problem</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Too long, refer to the video caption"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/QUCTc6BB5sX-10813-SPL0.00.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 10813</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Another two -->
+            <div class="columns">
+                <!-- Another one -->
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error & Mesh problem</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Too long, refer to the video caption"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/2azQ1b91cZZ-1129-SPL0.00.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 1129</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Another one -->
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error & Mesh problem</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Too long, refer to the video caption"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/2azQ1b91cZZ-5346-SPL0.86.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 5346</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+    
+            <!-- Another two -->
+            <div class="columns">
+                <!-- Another one -->
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error & Mesh problem</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Too long, refer to the video caption"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/2azQ1b91cZZ-10999-SPL0.00.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 10999</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Another one -->
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error & Mesh problem</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Too long, refer to the video caption"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/QUCTc6BB5sX-1335-SPL0.00.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 1135</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+              <!-- Another two -->
+              <div class="columns">
+                <!-- Another one -->
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error & Mesh problem</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Too long, refer to the video caption"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/QUCTc6BB5sX-6823-SPL0.00.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 6283</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Another one -->
+                <div class="column">
+                    <div class="box">
+                        <div class="media-content">
+                            <span class="tag is-danger">Instruction error & Mesh problem</span>
+                            <div class="card-content">
+                                <div class="content has-text-justified">
+                                    <blockquote>
+                                        <i>"Too long, refer to the video caption"</i>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <video width="500" src="./static/videos/RXR-CE/QUCTc6BB5sX-6935-SPL0.00.mp4"
+                                title="YouTube video player" frameborder="0" autoplay controls muted playsinline
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </video>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>Ep id: 6935</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre>
+      <code>
+        
+    </code>
+    </pre>
+    </div>
+  </section> -->
+
+    <footer class="footer">
+        <div class="container">
+
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This website is licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                        <p>
+                            <a href="https://github.com/nerfies/nerfies.github.io">Source code</a> of this website
+                            (Nerfies)
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Functions to open and close a modal
+            function openModal($el) {
+                $el.classList.add('is-active');
+            }
+
+            function closeModal($el) {
+                $el.classList.remove('is-active');
+            }
+
+            function closeAllModals() {
+                (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                    closeModal($modal);
+                });
+            }
+
+            // Add a click event on buttons to open a specific modal
+            (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+                const modal = $trigger.dataset.target;
+                const $target = document.getElementById(modal);
+
+                $trigger.addEventListener('click', () => {
+                    openModal($target);
+                });
+            });
+
+            // Add a click event on various child elements to close the parent modal
+            (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+                const $target = $close.closest('.modal');
+
+                $close.addEventListener('click', () => {
+                    closeModal($target);
+                });
+            });
+
+            // Add a keyboard event to close all modals
+            document.addEventListener('keydown', (event) => {
+                if (event.key === "Escape") {
+                    closeAllModals();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Le-RNR-map">
+  <meta name="keywords" content="RNR-map, Le-RNR-map, lernr map, lernrmap, lernr, CLIP">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mind the Error! Detect and Localize Instruction Errors in Vision and Language
+    Navigation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/bulma-carousel.min.css"> -->
+  <!-- <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/robot.png">
+  <link rel="stylesheet" href="./static/css/prism.css" data-noprefix />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <!-- <script src="./static/js/bulma-carousel.min.js"></script> -->
+  <!-- <script src="./static/js/bulma-slider.min.js"></script> -->
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/prism.js"></script>
+  <meta name="google-site-verification" content="rvZfDSs9SdTOr4oSUadPVLK7hrmPjfievNepG09VJm8" />
+
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://intelligolabs.net/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://intelligolabs.github.io/Le-RNR-Map/">
+              Le-RNR-Map (ICCV 2023)
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">Dataset 
+
+            </h1>
+            
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://openaccess.thecvf.com/content/ICCV2023W/VLAR/html/Taioli_Language-Enhanced_RNR-Map_Querying_Renderable_Neural_Radiance_Field_Maps_with_Natural_ICCVW_2023_paper.html"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span> -->
+
+
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/intelligolabs/R2RIE-CE"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (upon acceptance)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      
+      <div class="columns is-centered ">
+
+        <div class="column is-full">
+          <h2 class="title is-4">R2R-IE-CE v1<span class="tag is-warning is-light">Available upon acceptance</span></h2>
+          
+          <div class="content has-text-justified">
+            <p>
+              This dataset is used to benchmark the task of <i>Detection and Localization of Instruction Errors</i>, presented in our paper.
+              You will find the dataset explanation here, as well as the Habitat Integration to use it.
+            </p>
+          </div>
+
+          <h5 class="title is-5">Val Unseen</h5>
+          <p>Here we show how our json.gz dataset are formed:</p>
+
+          <pre><code class="language-json line-numbers">
+{"episodes": [
+{
+  "episode_id": "//integer number",
+  "trajectory_id": "integer number representing the gt trajectory",
+  "scene_id": "string representing the scene",
+  "start_position": "list of float representing the start position",
+  "start_rotation": "list of float representing the start rotation",
+  "goals": "as in standard vlnce",
+  "instruction": {
+    "instruction_text": "string representing the instruction",
+    "instruction_tokens": "list of integer representing the instruction tokens (using BERT tokenizer)",
+  },
+  "reference_path" : "as in standard vlnce",
+  "error_information" : {
+    "episode_contains_error": "boolean",
+    "error_type": "integer representing the error type",
+    "token_swapped": [
+    {
+      "new_word": "string representing the new word",
+      "token_id" : ["list of bert token id of this word"],
+      "token_id_position": ["list of integer representing the index of the swapped words in the new instruction"],
+      "old_word": "string representing the old word",
+    }]
+  }
+  "old_episode_id": "integer number representing the episode id from which this episode was generated"
+},
+{}, ...],
+"instruction_vocab": [
+// same as BEVBert
+]}
+          </code></pre>
+        
+          <h5 class="title is-5">Habitat Integration</h5>
+          <p>In Progress</p>
+        </div>
+       
+      </div>
+
+
+  </section>
+
+
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre>
+      <code>
+        
+    </code>
+    </pre>
+    </div>
+  </section> -->
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              <a href="https://github.com/nerfies/nerfies.github.io">Source code</a> of this website (Nerfies)
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

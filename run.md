@@ -1,0 +1,1 @@
+ffmpeg -i failure_fig_1.mp4 -vf "crop=in_w-380:in_h:0:0" navigation_failure_left_token.mp4 -y
