@@ -33,7 +33,7 @@ contact: <code>francesco.taioli@polito.it</code>
 > Consider citing our paper:
 > ```BibTeX
 >   @article{taioli2024mind,
->   title={{Mind the error! detection and localization of instruction errors in vision-and-language navigation}},
+>   title={{Mind the Error! Detection and Localization of Instruction Errors in Vision-and-Language Navigation}},
 >   author={Taioli, Francesco and Rosa, Stefano and Castellini, Alberto and Natale, Lorenzo and Del Bue, Alessio and Farinelli, Alessandro and Cristani, Marco and Wang, Yiming},
 >   journal={arXiv preprint arXiv:2403.10700},
 >   year={2024}
