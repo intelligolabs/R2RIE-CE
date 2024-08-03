@@ -36,7 +36,8 @@ contact: <code>francesco.taioli@polito.it</code>
 >   title={{Mind the Error! Detection and Localization of Instruction Errors in Vision-and-Language Navigation}},
 >   author={Taioli, Francesco and Rosa, Stefano and Castellini, Alberto and Natale, Lorenzo and Del Bue, Alessio and Farinelli, Alessandro and Cristani, Marco and Wang, Yiming},
 >   journal={arXiv preprint arXiv:2403.10700},
->   year={2024}
+>   year={2024},
+>   url={https://arxiv.org/abs/2403.10700}
 >   }
 >   ```
 
